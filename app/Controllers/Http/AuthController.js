@@ -65,7 +65,9 @@ class AuthController {
     }
   };
 
-  account({response, auth}) {
+  async account({response, auth}) {
+    const user = await User.find(auth.user.id);
+    
     response.json({data: auth.user})
   };
 }
