@@ -18,4 +18,10 @@ const Route = use('Route')
 
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
-})
+});
+
+Route.group(() => {
+  Route.post('register', 'AuthController.register');
+  Route.post('login', 'AuthController.login');
+  Route.get('account', 'AuthController.account').middleware(['auth']);
+}).prefix('api/:version/auth');
