@@ -21,7 +21,7 @@ Route.get('/', () => {
 });
 
 Route.group(() => {
-  Route.post('register', 'AuthController.register');
-  Route.post('login', 'AuthController.login');
+  Route.post('register', 'AuthController.register').middleware(['guest']);
+  Route.post('login', 'AuthController.login').middleware(['guest']);
   Route.get('account', 'AuthController.account').middleware(['auth']);
 }).prefix('api/:version/auth');
